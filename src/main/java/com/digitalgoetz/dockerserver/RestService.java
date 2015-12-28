@@ -88,7 +88,7 @@ public class RestService extends BasicService {
 		config.addHttpHandler(fileContainer, "/web");
 
 		ServiceBinder binder = new ServiceBinder(pairs);
-		final ResourceConfig rc = new ResourceConfig().register(binder).packages("services");
+		final ResourceConfig rc = new ResourceConfig().register(binder).packages(getClass().getPackage().toString());
 		final GrizzlyHttpContainer restContainer = new GrizzlyUtil().getContainer(rc);
 		config.addHttpHandler(restContainer, "/rest");
 		server = httpServer;
